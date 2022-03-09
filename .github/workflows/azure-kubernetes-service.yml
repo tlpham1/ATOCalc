@@ -40,7 +40,7 @@ env:
   RESOURCE_GROUP: "AtoResourceGroup"
   CLUSTER_NAME: "AtoCluster"
   IMAGE_PULL_SECRET_NAME: "ato-registry-secret"
-  DEPLOYMENT_MANIFEST_PATH: 'ato-kubernetes'
+  DEPLOYMENT_MANIFEST_PATH: 'ato-kubernetes.yml'
 
 jobs:
   build:
