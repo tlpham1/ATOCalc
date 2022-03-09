@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-ato
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-ato
+  template:
+    metadata:
+      labels:
+        app: azure-ato
+    spec:
+      containers:
+      - name: azure-ato
+        image: atocontainerregistry.azurecr.io/ato
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-ato
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-ato
