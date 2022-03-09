@@ -36,7 +36,7 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "AtoContainerRegistry"
-  CONTAINER_NAME: "ato:latest"
+  CONTAINER_NAME: "ato"
   RESOURCE_GROUP: "AtoResourceGroup"
   CLUSTER_NAME: "AtoCluster"
   IMAGE_PULL_SECRET_NAME: "ato-registry-secret"
