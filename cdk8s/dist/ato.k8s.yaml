@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ato-service-c82befd6
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: ato-k8s
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ato-deployment-c87ccc89
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ato-k8s
+  template:
+    metadata:
+      labels:
+        app: ato-k8s
+    spec:
+      containers:
+        - image: atocontainerregistry.azurecr.io/ato
+          name: ato-kubernetes
+          ports:
+            - containerPort: 8080
