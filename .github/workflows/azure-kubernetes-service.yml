@@ -40,7 +40,7 @@ env:
   RESOURCE_GROUP: "AtoResourceGroup"
   CLUSTER_NAME: "AtoCluster"
   IMAGE_PULL_SECRET_NAME: "ato-registry-secret"
-  DEPLOYMENT_MANIFEST_PATH: 'ato-kubernetes.yml'
+  DEPLOYMENT_MANIFEST_PATH: 'cdk8s/cdk8s.yml'
 
 jobs:
   build:
@@ -92,6 +92,11 @@ jobs:
         container-registry-username: ${{ steps.get-acr-creds.outputs.username }}
         container-registry-password: ${{ steps.get-acr-creds.outputs.password }}
         secret-name: ${{ env.IMAGE_PULL_SECRET_NAME }}  
+        
+     # Creates a manifest.yml file for deployment
+    - name: Create manifest file using cdk8s
+      run: |
+        cdk8s synth
 
     # Deploys application based on given manifest file
     - name: Deploys application
